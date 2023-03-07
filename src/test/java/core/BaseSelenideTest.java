@@ -39,7 +39,6 @@ abstract public class BaseSelenideTest {
         connection = DriverManager
                 .getConnection("jdbc:postgresql://localhost:5432/vacancies",
                         "postgres", "postgres");
-        connection.setAutoCommit(false);
         System.out.println("Opened database successfully");
     }
     catch(Exception e){e.printStackTrace();}}
