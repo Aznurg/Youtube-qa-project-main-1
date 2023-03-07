@@ -6,11 +6,16 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  * Базовый класс для инициализации селенида
  */
 abstract public class BaseSelenideTest {
-
+    protected Connection connection = null;
     /**
      * Инициализация selenide с настройками
      */
@@ -19,7 +24,7 @@ abstract public class BaseSelenideTest {
         Configuration.browser = "chrome";
         Configuration.driverManagerEnabled = true;
         Configuration.browserSize = "1920x1080";
-        Configuration.startMaximized=true;
+        Configuration.startMaximized=false;
         Configuration.headless = false;
     }
 
@@ -29,7 +34,15 @@ abstract public class BaseSelenideTest {
     @BeforeEach
     public void init(){
         setUp();
+        try{
+        Class.forName("org.postgresql.Driver");
+        connection = DriverManager
+                .getConnection("jdbc:postgresql://localhost:5432/vacancies",
+                        "postgres", "postgres");
+        connection.setAutoCommit(false);
+        System.out.println("Opened database successfully");
     }
+    catch(Exception e){e.printStackTrace();}}
 
     /**
      * Выполнение метода после каждого закрытия тестов
@@ -37,5 +50,11 @@ abstract public class BaseSelenideTest {
     @AfterEach
     public void tearDown(){
         Selenide.closeWebDriver();
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("Closed database successfully");
     }
 }
