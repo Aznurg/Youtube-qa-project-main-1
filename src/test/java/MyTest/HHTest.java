@@ -25,13 +25,9 @@ public class HHTest extends BaseSelenideTest {
         List<SelenideElement> vacancyList = searchPage.vacancyList;
 
         for(int i=0;i<vacancyList.size()-1;i++){
-            System.out.println("TITLE: "+searchPage.getTitle(i));
-            System.out.println("SALARY: "+searchPage.getSalary(i));
-            System.out.println("EMPLOYER: "+searchPage.getEmployer(i));
-
+            String insertTableSQL = "INSERT INTO vacancies"+
+                    "VALUES("+searchPage.getTitle(i)+searchPage.getSalary(i)+searchPage.getEmployer(i)+")";
         }
-//        DataBase db = new DataBase();
-//        db.testDatabase();
 
 
 
