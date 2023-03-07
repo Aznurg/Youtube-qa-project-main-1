@@ -12,9 +12,9 @@ public class DataBase {
             String url = "jdbc:postgresql://localhost:5432/contactdb";
             String login = "postgres";
             String password = "postgres";
-            Connection con = DriverManager.getConnection(url, login, password);
+            Connection connection = DriverManager.getConnection(url, login, password);
             try {
-                Statement stmt = con.createStatement();
+                Statement stmt = connection.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * FROM JC_CONTACT");
                 while (rs.next()) {
                     String str = rs.getString("contact_id") + ":" + rs.getString(2);
@@ -23,7 +23,7 @@ public class DataBase {
                 rs.close();
                 stmt.close();
             } finally {
-                con.close();
+                connection.close();
             }
         } catch (Exception e) {
             e.printStackTrace();

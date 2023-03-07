@@ -11,10 +11,10 @@ import static com.codeborne.selenide.Selenide.$x;
 public class SearchPage extends BaseSeleniumPage {
 
     public List<SelenideElement> vacancyList = $$x("//div[@class='vacancy-serp-item__layout']");
-    protected SelenideElement ExtendedSearch = $x("//a[@data-qa='advanced-search']");
-    protected SelenideElement SetSalary = $x("//input[@data-qa='advanced-search-salary']");
-    protected SelenideElement OnlyChosenSalarySearch = $x("//input[@data-qa='control-vacancysearch__only-with-compensation']/..");
-    protected SelenideElement SearchButton = $x("//button[@data-qa='advanced-search-submit-button']");
+    protected SelenideElement extendedSearch = $x("//a[@data-qa='advanced-search']");
+    protected SelenideElement setSalary = $x("//input[@data-qa='advanced-search-salary']");
+    protected SelenideElement onlyChosenSalarySearch = $x("//input[@data-qa='control-vacancysearch__only-with-compensation']/..");
+    protected SelenideElement searchButton = $x("//button[@data-qa='advanced-search-submit-button']");
     /*protected SelenideElement title = $x(Vacancy+"//h3");
     protected SelenideElement salary = $x(Vacancy+"//span[@data-qa='vacancy-serp__vacancy-compensation']");
     protected SelenideElement employer = $x(Vacancy+"//a[@data-qa='vacancy-serp__vacancy-employer']");*/
@@ -32,10 +32,10 @@ public class SearchPage extends BaseSeleniumPage {
     }
 
     public void SetSalaryLimit(Integer salary) {
-        ExtendedSearch.click();
-        SetSalary.sendKeys(salary.toString());
-        OnlyChosenSalarySearch.click();
-        SearchButton.click();
+        extendedSearch.click();
+        setSalary.sendKeys(salary.toString());
+        onlyChosenSalarySearch.click();
+        searchButton.click();
     }
 
 }

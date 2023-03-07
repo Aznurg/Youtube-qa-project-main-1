@@ -11,13 +11,13 @@ import java.util.Map;
 
 
 public class HHTest extends BaseSelenideTest {
-    private final static String url = "https://hh.ru/";
+    private final static String URL = "https://hh.ru/";
     private final static String SEARCH_STRING = "QA Automation Java";
 
 
     @Test
     public void searchStringTest() {
-        MainPage mainPage = new MainPage(url);
+        MainPage mainPage = new MainPage(URL);
         mainPage.chooseCity("Москва");
         SearchPage searchPage = mainPage.search(SEARCH_STRING);
         searchPage.SetSalaryLimit(150000);
