@@ -10,7 +10,7 @@ public class MainPage {
     protected final SelenideElement textBoxInput = $x("//input[@data-qa='search-input']");
     protected final SelenideElement cityChoiceButton = $x("//button[@data-qa='mainmenu_areaSwitcher']");
     protected final SelenideElement cityChoiceInput = $x("//input[@data-qa='area-search-input']");
-    protected final SelenideElement cityChoice = $x("//ul[@data-qa=\"bloko-suggest-list\"]");
+    protected final SelenideElement cityChoice = $x("//div[@data-qa=\"area-switcher-autocomplete-city\"]");
 
         public MainPage(String url){
             Selenide.open(url);

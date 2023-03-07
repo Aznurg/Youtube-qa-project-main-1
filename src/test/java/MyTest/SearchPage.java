@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class SearchPage extends BaseSeleniumPage {
 
-    public List<SelenideElement> vacancyList = $$x("//div[@class='serp-item']");
+    public List<SelenideElement> vacancyList = $$x("//div[@class='vacancy-serp-item__layout']");
     protected SelenideElement ExtendedSearch = $x("//a[@data-qa='advanced-search']");
     protected SelenideElement SetSalary = $x("//input[@data-qa='advanced-search-salary']");
     protected SelenideElement OnlyChosenSalarySearch = $x("//input[@data-qa='control-vacancysearch__only-with-compensation']/..");

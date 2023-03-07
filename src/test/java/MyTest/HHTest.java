@@ -24,13 +24,16 @@ public class HHTest extends BaseSelenideTest {
 
         List<SelenideElement> vacancyList = searchPage.vacancyList;
 
-        HashMap<String, Object> result  = new HashMap<>();
-
         for(int i=0;i<vacancyList.size()-1;i++){
-            result.put("TITLE", searchPage.getTitle(i));
-            result.put("SALARY", searchPage.getSalary(i));
-            result.put("EMPLOYER", searchPage.getEmployer(i));;
+            System.out.println("TITLE: "+searchPage.getTitle(i));
+            System.out.println("SALARY: "+searchPage.getSalary(i));
+            System.out.println("EMPLOYER: "+searchPage.getEmployer(i));
+
         }
+//        DataBase db = new DataBase();
+//        db.testDatabase();
+
+
 
         /*Iterator<SelenideElement> iterator = vacancyList.iterator();
 
@@ -40,9 +43,9 @@ public class HHTest extends BaseSelenideTest {
             result.put("EMPLOYER", searchPage.getEmployer());;
         }*/
 
-        for(Map.Entry<String,Object> entry:result.entrySet()){
-            System.out.println(entry.getKey()+"  "+entry.getValue());
-        }
+//        for(Map.Entry<String,Object> entry:result.entrySet()){
+//            System.out.println(entry.getKey()+"  "+entry.getValue());
+//        }
 
 
 
