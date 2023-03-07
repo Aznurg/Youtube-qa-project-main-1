@@ -4,6 +4,9 @@ import com.codeborne.selenide.SelenideElement;
 import core.BaseSelenideTest;
 import org.junit.jupiter.api.Test;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -24,26 +27,28 @@ public class HHTest extends BaseSelenideTest {
 
         List<SelenideElement> vacancyList = searchPage.vacancyList;
 
-        for(int i=0;i<vacancyList.size()-1;i++){
-            String insertTableSQL = "INSERT INTO vacancies"+
-                    "VALUES("+searchPage.getTitle(i)+searchPage.getSalary(i)+searchPage.getEmployer(i)+")";
+        Connection connection = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            connection = DriverManager
+                    .getConnection("jdbc:postgresql://localhost:5432/vacancies",
+                            "postgress", "postgress");
+            connection.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+            stmt = connection.createStatement();
+            for(int i=0;i<vacancyList.size()-1;i++){
+                String sql = "INSERT INTO vacancies (Title,Salary,Employer) "
+                        + "VALUES (searchPage.getTitle(i),searchPage.getSalary(i),searchPage.getEmployer(i));";
+            stmt.executeUpdate(sql);}
+            stmt.close();
+            connection.commit();
+            connection.close();
+        } catch (Exception e) {
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+            System.exit(0);
         }
+        System.out.println("Records created successfully");
 
-
-
-        /*Iterator<SelenideElement> iterator = vacancyList.iterator();
-
-        while (iterator.hasNext()) {
-            result.put("TITLE", searchPage.getTitle());
-            result.put("SALARY", searchPage.getSalary());
-            result.put("EMPLOYER", searchPage.getEmployer());;
-        }*/
-
-//        for(Map.Entry<String,Object> entry:result.entrySet()){
-//            System.out.println(entry.getKey()+"  "+entry.getValue());
-//        }
-
-
-
+        }
     }
-}
