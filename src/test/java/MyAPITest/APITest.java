@@ -2,11 +2,11 @@ package MyAPITest;
 
 import api.spec.Specifications;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
@@ -18,8 +18,8 @@ public class APITest{
     public void putPetTest(){
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         Root root = new Root();
-        Tag tag = (Tag) new ArrayList<Tag>();
-        Root pet = new Root(322,root.new Category(323, "animal"), "Slopa", new ArrayList<String>(), (ArrayList<Root.Tag>) tag, "chilling");
+        Tag tag = new Tag(324, "cat");
+        Root pet = new Root(322,root.new Category(323, "animal"), "Slopa", new ArrayList<String>(), new ArrayList<Tag>(), "chilling");
         Response response = given()
                 .body(pet)
                 .when()
