@@ -34,14 +34,15 @@ abstract public class BaseSelenideTest {
     @BeforeEach
     public void init(){
         setUp();
-        try{
-        Class.forName("org.postgresql.Driver");
-        connection = DriverManager
-                .getConnection("jdbc:postgresql://localhost:5432/vacancies",
-                        "postgres", "postgres");
-        System.out.println("Opened database successfully");
+//        try{
+//        Class.forName("org.postgresql.Driver");
+//        connection = DriverManager
+//                .getConnection("jdbc:postgresql://localhost:5432/vacancies",
+//                        "postgres", "postgres");
+//        System.out.println("Opened database successfully");
+//    }
+//    catch(Exception e){e.printStackTrace();}
     }
-    catch(Exception e){e.printStackTrace();}}
 
     /**
      * Выполнение метода после каждого закрытия тестов
@@ -49,11 +50,11 @@ abstract public class BaseSelenideTest {
     @AfterEach
     public void tearDown(){
         Selenide.closeWebDriver();
-        try {
-            connection.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        System.out.println("Closed database successfully");
+//        try {
+//            connection.close();
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//        System.out.println("Closed database successfully");
     }
 }
