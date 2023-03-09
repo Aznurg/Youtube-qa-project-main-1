@@ -65,7 +65,7 @@ public class ReqresNoPojoTest {
 
     @Test
     public void unsuccessUserRegNoPojo(){
-        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecError400());
+        Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecError404());
         Map<String, String> user = new HashMap<>();
         user.put("email", "sydney@fife");
         Response response = given()

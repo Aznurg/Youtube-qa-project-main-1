@@ -92,7 +92,7 @@ public class ReqresPojoTest {
     @Test
     @DisplayName("Не успешная регистрация")
     public void unSuccessUserRegTest(){
-        Specifications.installSpecification(Specifications.requestSpec(URL),Specifications.responseSpecError400());
+        Specifications.installSpecification(Specifications.requestSpec(URL),Specifications.responseSpecError404());
         Register peopleSecond = new Register("sydney@fife","");
         UnsuccessUserReg unSuccessUserReg = given()
                 .body(peopleSecond)
