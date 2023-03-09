@@ -19,7 +19,7 @@ public class APITest{
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         Root root = new Root();
         Tag tag = new Tag(324, "cat");
-        Root pet = new Root(322,root.new Category(323, "animal"), "Slopa", new ArrayList<String>(), new ArrayList<Tag>(), "chilling");
+        Root pet = new Root(322,new Category(323, "animal"), "Slopa", new ArrayList<String>(), new ArrayList<Tag>(), "chilling");
         Response response = given()
                 .body(pet)
                 .when()
