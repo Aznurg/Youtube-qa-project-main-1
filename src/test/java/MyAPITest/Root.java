@@ -46,4 +46,10 @@ public class Root {
         this.tags = tags;}
     public void setStatus(String status) {
         this.status = status;}
+
+    public String containsId(int java) {
+        if (this.id == java){return this.name;}
+        else return null;
+    }
+
 }
